@@ -2,7 +2,7 @@
   "nodeModulesDir": "auto",
   "imports": {
     "@modelcontextprotocol/sdk": "npm:@mcp-use/modelcontextprotocol-sdk@^1.24.3-mcp-use.4",
-    "@mcp-use/modelcontextprotocol-sdk": "npm:@mcp-use/modelcontextprotocol-sdk@^1.24.3-mcp-use.4",
+    "@mcp-use/modelcontextprotocol-sdk": "npm:@mcp-use/modelcontextprotocol-sdk@^1.24.3-mcp-use.2",
     "@mcp-ui/server": "npm:@mcp-ui/server@^5.15.0",
     "mcp-use/server": "../../dist/src/server/index.js",
     "zod": "npm:zod@^4.2.0",
@@ -15,7 +15,9 @@
     "async_hooks": "node:async_hooks"
   },
   "compilerOptions": {
-    "lib": ["deno.window", "deno.unstable"]
+    "lib": [
+      "deno.window",
+      "deno.unstable"
+    ]
   }
 }
-
