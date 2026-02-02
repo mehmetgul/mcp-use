@@ -6,6 +6,15 @@ rss: true
 tag: "New"
 ---
 
+<Update label="v0.18.2" description="January 2026">
+  ## Inspector Fixes
+  Patch release with widget behavior fix and improved URL handling.
+
+- **Fix**: Widget pending state now correctly emulated to reflect ChatGPT behavior
+- **Fix**: Inspector now detects when `server=` query parameter contains a URL that's not already connected and automatically redirects to use `autoConnect=` instead
+- **Update**: Updated mcp-use dependency to v1.16.2
+</Update>
+
 <Update label="v0.18.1" description="January 2026">
   ## Dependency Update
   Patch release aligned with mcp-use v1.16.1.
