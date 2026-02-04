@@ -5,38 +5,32 @@ description: Build ChatGPT apps with interactive widgets using mcp-use and OpenA
 
 # ChatGPT App Builder
 
-Build production-ready ChatGPT apps with interactive widgets using the mcp-use framework and OpenAI Apps SDK. This skill provides zero-config widget development with automatic registration and built-in React hooks.
+Build production-ready ChatGPT apps with interactive widgets using mcp-use. Zero-config widget development with automatic registration and built-in React hooks.
 
 ## Quick Start
-
-**Always bootstrap with the MCP Apps template:**
 
 ```bash
 npx create-mcp-use-app my-chatgpt-app --template mcp-apps
 cd my-chatgpt-app
-yarn install
-yarn dev
+npm install && npm run dev
 ```
 
-This creates a project structure:
-
+Project structure:
 ```
 my-chatgpt-app/
 ├── resources/              # React widgets (auto-registered!)
-│   ├── display-weather.tsx # Example widget
+│   ├── weather-display.tsx # Example widget
 │   └── product-card.tsx    # Another widget
 ├── public/                 # Static assets
 │   └── images/
 ├── index.ts               # MCP server entry
 ├── package.json
-├── tsconfig.json
-└── README.md
+└── tsconfig.json
 ```
 
 ## Why mcp-use for ChatGPT Apps?
 
 Traditional OpenAI Apps SDK requires significant manual setup:
-
 - Separate project structure (server/ and web/ folders)
 - Manual esbuild/webpack configuration
 - Custom useWidgetState hook implementation
@@ -45,7 +39,6 @@ Traditional OpenAI Apps SDK requires significant manual setup:
 - Manual widget registration
 
 **mcp-use simplifies everything:**
-
 - Single command setup
 - Drop widgets in `resources/` folder - auto-registered
 - Built-in `useWidget()` hook with state, props, tool calls
@@ -56,24 +49,15 @@ Traditional OpenAI Apps SDK requires significant manual setup:
 
 ## MCP Apps vs ChatGPT Apps SDK
 
-mcp-use supports multiple widget protocols, giving you maximum compatibility:
+| Protocol | Use Case | Compatibility | Status |
+|----------|----------|---------------|--------|
+| **MCP Apps** (`type: "mcpApps"`) | Maximum compatibility | ChatGPT + MCP Apps clients | **Recommended** |
+| **ChatGPT Apps SDK** (`type: "appsSdk"`) | ChatGPT-only features | ChatGPT only | Supported |
 
-| Protocol                                 | Use Case               | Compatibility                 | Status          |
-| ---------------------------------------- | ---------------------- | ----------------------------- | --------------- |
-| **MCP Apps** (`type: "mcpApps"`)         | Maximum compatibility  | ChatGPT + MCP Apps clients | **Recommended** |
-| **ChatGPT Apps SDK** (`type: "appsSdk"`) | ChatGPT-only features  | ChatGPT only               | Supported       |
-| **MCP-UI**                               | Simple, static content | MCP clients only           | Specialized     |
-
-### Why MCP Apps?
-
-MCP Apps is the **official standard** (SEP-1865) for interactive widgets in the Model Context Protocol:
-
+**Why MCP Apps?** It's the official standard (SEP-1865) for interactive widgets:
 - **Universal**: Works with ChatGPT, Claude Desktop, Goose, and all MCP Apps clients
-- **Future-proof**: Based on open specification, ensuring long-term compatibility
-- **Secure**: Double-iframe sandbox with granular CSP control
-- **Zero config**: With `type: "mcpApps"`, mcp-use automatically generates metadata for BOTH protocols
-
-**Key Point**: When you use `type: "mcpApps"` in your server configuration, your widgets automatically work with both ChatGPT (Apps SDK protocol) and MCP Apps clients. You write the widget once, and mcp-use handles the protocol translation.
+- **Future-proof**: Based on open specification
+- **Zero config**: With `type: "mcpApps"`, mcp-use generates metadata for BOTH protocols automatically
 
 ## Creating Widgets
 
@@ -85,7 +69,6 @@ Create `resources/weather-display.tsx`:
 import { McpUseProvider, useWidget, type WidgetMetadata } from "mcp-use/react";
 import { z } from "zod";
 
-// Define widget metadata
 export const widgetMetadata: WidgetMetadata = {
   description: "Display current weather for a city",
   props: z.object({
@@ -99,7 +82,6 @@ export const widgetMetadata: WidgetMetadata = {
 const WeatherDisplay: React.FC = () => {
   const { props, isPending } = useWidget();
 
-  // Always handle loading state first
   if (isPending) {
     return (
       <McpUseProvider autoSize>
@@ -123,12 +105,10 @@ const WeatherDisplay: React.FC = () => {
 export default WeatherDisplay;
 ```
 
-That's it! The widget is automatically:
-
+Widget is automatically:
 - Registered as MCP tool `weather-display`
 - Registered as MCP resource `ui://widget/weather-display.html`
 - Bundled for Apps SDK compatibility
-- Ready to use in ChatGPT
 
 ### Complex Widget (Folder Structure)
 
@@ -143,65 +123,12 @@ resources/
     │   └── FilterBar.tsx
     ├── hooks/
     │   └── useFilter.ts
-    ├── types.ts
-    └── constants.ts
+    └── types.ts
 ```
 
-**Entry point (`widget.tsx`):**
-
-```tsx
-import { McpUseProvider, useWidget, type WidgetMetadata } from "mcp-use/react";
-import { z } from "zod";
-import { ProductCard } from "./components/ProductCard";
-import { FilterBar } from "./components/FilterBar";
-
-export const widgetMetadata: WidgetMetadata = {
-  description: "Display product search results with filtering",
-  props: z.object({
-    products: z.array(
-      z.object({
-        id: z.string(),
-        name: z.string(),
-        price: z.number(),
-        image: z.string(),
-      })
-    ),
-    query: z.string(),
-  }),
-};
-
-const ProductSearch: React.FC = () => {
-  const { props, isPending, state, setState } = useWidget();
-
-  if (isPending) {
-    return (
-      <McpUseProvider autoSize>
-        <div>Loading...</div>
-      </McpUseProvider>
-    );
-  }
-
-  return (
-    <McpUseProvider autoSize>
-      <div>
-        <h1>Search: {props.query}</h1>
-        <FilterBar onFilter={(filters) => setState({ filters })} />
-        <div className="grid grid-cols-3 gap-4">
-          {props.products.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      </div>
-    </McpUseProvider>
-  );
-};
-
-export default ProductSearch;
-```
+Entry point must be named `widget.tsx` and export `widgetMetadata` + default component.
 
 ## Widget Metadata
-
-Required metadata for automatic registration:
 
 ```typescript
 export const widgetMetadata: WidgetMetadata = {
@@ -230,16 +157,15 @@ export const widgetMetadata: WidgetMetadata = {
 };
 ```
 
-**Important:**
-
+**Key fields:**
 - `description`: Used for tool and resource descriptions
 - `props`: Zod schema defines widget input parameters
 - `exposeAsTool`: Set to `false` if only using widget via custom tools
-- `metadata`: Unified configuration that works for both protocols (recommended)
+- `metadata`: Unified configuration for both protocols (recommended)
 
 ## Content Security Policy (CSP)
 
-Control what external resources your widget can access using CSP configuration:
+Control external resources your widget can access:
 
 ```typescript
 export const widgetMetadata: WidgetMetadata = {
@@ -247,134 +173,39 @@ export const widgetMetadata: WidgetMetadata = {
   props: z.object({ city: z.string() }),
   metadata: {
     csp: {
-      // APIs your widget needs to call
-      connectDomains: ["https://api.weather.com", "https://weather-backup.com"],
-
+      // APIs to call (fetch, WebSocket, XMLHttpRequest)
+      connectDomains: ["https://api.weather.com", "https://backup.weather.com"],
       // Static assets (images, fonts, stylesheets)
       resourceDomains: ["https://cdn.weather.com"],
-
-      // External content to embed in iframes
+      // External iframes
       frameDomains: ["https://embed.weather.com"],
-
-      // Script CSP directives (use carefully!)
+      // Script directives (use carefully!)
       scriptDirectives: ["'unsafe-inline'"],
     },
   },
 };
 ```
 
-**CSP Field Reference:**
-
-- **`connectDomains`**: APIs to call via fetch, WebSocket, XMLHttpRequest
-- **`resourceDomains`**: Load images, fonts, stylesheets, videos
-- **`frameDomains`**: Embed external content in iframes
-- **`scriptDirectives`**: Script-src CSP directives (avoid `'unsafe-eval'` in production)
-
-**Security Best Practices:**
-
+**Security tips:**
 - Specify exact domains: `https://api.weather.com`
-- Avoid wildcards: `https://*.weather.com` (less secure)
-- Never use `'unsafe-eval'` unless absolutely necessary
-- Test CSP in development before deploying
+- Avoid wildcards in production
+- Never use `'unsafe-eval'` unless necessary
 
-## Metadata Configuration Options
-
-### Modern Unified Approach (Recommended)
-
-Use the `metadata` field for dual-protocol support:
-
-```typescript
-export const widgetMetadata: WidgetMetadata = {
-  description: "Weather widget",
-  props: propSchema,
-  metadata: {
-    // Works for BOTH MCP Apps AND ChatGPT
-    csp: {
-      connectDomains: ["https://api.weather.com"],
-      resourceDomains: ["https://cdn.weather.com"],
-    },
-    prefersBorder: true,
-    autoResize: true,
-    widgetDescription: "Displays current weather",
-  },
-};
-```
-
-### Legacy Apps SDK Approach (Deprecated)
-
-The old ChatGPT-only format (still supported but not recommended):
-
-```typescript
-export const widgetMetadata: WidgetMetadata = {
-  description: "Weather widget",
-  props: propSchema,
-  appsSdkMetadata: {
-    // ChatGPT only - snake_case with openai/ prefix
-    "openai/widgetCSP": {
-      connect_domains: ["https://api.weather.com"],
-      resource_domains: ["https://cdn.weather.com"],
-    },
-    "openai/widgetPrefersBorder": true,
-    "openai/toolInvocation/invoking": "Loading...",
-    "openai/toolInvocation/invoked": "Loaded",
-  },
-};
-```
-
-**Migration Note**: The old format uses `appsSdkMetadata` with `openai/` prefixes and snake_case (e.g., `connect_domains`). The new format uses `metadata` with camelCase (e.g., `connectDomains`) and works for both protocols.
-
-### Using Both for Custom ChatGPT Features
-
-You can combine both fields to use standard metadata plus ChatGPT-specific overrides:
-
-```typescript
-export const widgetMetadata: WidgetMetadata = {
-  description: "Weather widget",
-  props: propSchema,
-  // Unified metadata (dual-protocol)
-  metadata: {
-    csp: { connectDomains: ["https://api.weather.com"] },
-    prefersBorder: true,
-  },
-  // ChatGPT-specific overrides/additions
-  appsSdkMetadata: {
-    "openai/widgetDescription": "ChatGPT-specific description",
-    "openai/customFeature": "some-value", // Any custom OpenAI metadata
-    "openai/locale": "en-US",
-  },
-};
-```
-
-**Use Case**: When you need to pass custom OpenAI-specific metadata that doesn't exist in the unified format, add it to `appsSdkMetadata`. The fields will be passed directly to ChatGPT with the `openai/` prefix
+For detailed CSP configuration and legacy format, see [references/csp-and-metadata.md](references/csp-and-metadata.md).
 
 ## useWidget Hook
 
-The `useWidget` hook provides everything you need:
-
 ```tsx
 const {
-  // Widget props from tool input
-  props,
-
-  // Loading state (true = tool still executing)
-  isPending,
-
-  // Persistent widget state
-  state,
-  setState,
-
-  // Theme from host (light/dark)
-  theme,
-
-  // Call other MCP tools
-  callTool,
-
-  // Display mode control
-  displayMode,
-  requestDisplayMode,
-
-  // Additional tool output
-  output,
+  props,              // Widget input from tool (empty {} while pending)
+  isPending,          // True while tool still executing
+  state,              // Persistent widget state
+  setState,           // Update persistent state
+  theme,              // 'light' | 'dark' from host
+  callTool,           // Call other MCP tools
+  displayMode,        // 'inline' | 'pip' | 'fullscreen'
+  requestDisplayMode, // Request display mode change
+  output,             // Additional tool output
 } = useWidget<MyPropsType, MyOutputType>();
 ```
 
@@ -392,7 +223,11 @@ if (isPending) {
 // Now props are safe to use
 
 // Pattern 2: Conditional rendering
-return <div>{isPending ? <LoadingSpinner /> : <div>{props.city}</div>}</div>;
+return (
+  <div>
+    {isPending ? <LoadingSpinner /> : <div>{props.city}</div>}
+  </div>
+);
 
 // Pattern 3: Optional chaining (partial UI)
 return (
@@ -432,9 +267,7 @@ const { callTool } = useWidget();
 
 const refreshData = async () => {
   try {
-    const result = await callTool("get-weather", {
-      city: "Tokyo",
-    });
+    const result = await callTool("get-weather", { city: "Tokyo" });
     console.log("Result:", result.content);
   } catch (error) {
     console.error("Tool call failed:", error);
@@ -443,8 +276,6 @@ const refreshData = async () => {
 ```
 
 ### Display Mode Control
-
-Request different display modes:
 
 ```tsx
 const { displayMode, requestDisplayMode } = useWidget();
@@ -459,7 +290,7 @@ console.log(displayMode);
 
 ## Custom Tools with Widgets
 
-Create tools that return widgets with dual-protocol support:
+Create tools that return widgets:
 
 ```typescript
 import { MCPServer, widget, text } from "mcp-use/server";
@@ -468,6 +299,7 @@ import { z } from "zod";
 const server = new MCPServer({
   name: "weather-app",
   version: "1.0.0",
+  baseUrl: process.env.MCP_URL || "http://localhost:3000",
 });
 
 server.tool(
@@ -485,10 +317,8 @@ server.tool(
     },
   },
   async ({ city }) => {
-    // Fetch data from API
     const data = await fetchWeatherAPI(city);
 
-    // Return widget with runtime data
     return widget({
       props: {
         city,
@@ -505,23 +335,20 @@ server.tool(
 server.listen();
 ```
 
-**Key Points:**
-
+**Key points:**
 - `baseUrl` in server config enables proper asset loading
-- Widget works with BOTH ChatGPT and MCP Apps clients automatically
 - `widget: { name, invoking, invoked }` on tool definition
 - `widget({ props, output })` helper returns runtime data
 - `props` passed to widget, `output` shown to model
-- Widget must exist in `resources/` folder
 
 ## Static Assets
 
-Use the `public/` folder for images, fonts, etc:
+Use `public/` folder for images, fonts:
 
 ```
 my-app/
 ├── resources/
-├── public/              # Static assets
+├── public/
 │   ├── images/
 │   │   ├── logo.svg
 │   │   └── banner.png
@@ -529,7 +356,7 @@ my-app/
 └── index.ts
 ```
 
-**Using assets in widgets:**
+Using assets in widgets:
 
 ```tsx
 import { Image } from "mcp-use/react";
@@ -557,9 +384,9 @@ import { McpUseProvider } from "mcp-use/react";
 function MyWidget() {
   return (
     <McpUseProvider
-      autoSize // Auto-resize widget
-      viewControls // Add debug/fullscreen buttons
-      debug // Show debug info
+      autoSize      // Auto-resize widget
+      viewControls  // Add debug/fullscreen buttons
+      debug         // Show debug info
     >
       <div>Widget content</div>
     </McpUseProvider>
@@ -574,98 +401,59 @@ Handles both data URLs and public paths:
 ```tsx
 import { Image } from "mcp-use/react";
 
-function MyWidget() {
-  return (
-    <div>
-      <Image src="/images/photo.jpg" alt="Photo" />
-      <Image src="data:image/png;base64,..." alt="Data URL" />
-    </div>
-  );
-}
+<Image src="/images/photo.jpg" alt="Photo" />
+<Image src="data:image/png;base64,..." alt="Data URL" />
 ```
 
 ### ErrorBoundary
 
-Graceful error handling:
-
 ```tsx
 import { ErrorBoundary } from "mcp-use/react";
 
-function MyWidget() {
-  return (
-    <ErrorBoundary
-      fallback={<div>Something went wrong</div>}
-      onError={(error) => console.error(error)}
-    >
-      <MyComponent />
-    </ErrorBoundary>
-  );
-}
+<ErrorBoundary
+  fallback={<div>Something went wrong</div>}
+  onError={(error) => console.error(error)}
+>
+  <MyComponent />
+</ErrorBoundary>
 ```
+
+For full component API, see [references/components-api.md](references/components-api.md).
 
 ## Testing
 
 ### Using the Inspector
 
-1. **Start development server:**
-
-   ```bash
-   yarn dev
-   ```
-
-2. **Open Inspector:**
-   - Navigate to `http://localhost:3000/inspector`
-3. **Test widgets:**
-
-   - Click Tools tab
-   - Find your widget tool
-   - Enter test parameters
-   - Execute to see widget render
-
-4. **Debug interactions:**
-   - Use browser console
-   - Check RPC logs
-   - Test state persistence
-   - Verify tool calls
+1. Start development: `npm run dev`
+2. Open `http://localhost:3000/inspector`
+3. Click Tools tab → Find your widget → Enter parameters → Execute
+4. Debug with browser console, RPC logs, state inspection
 
 ### Testing in ChatGPT
 
-1. **Enable Developer Mode:**
-
-   - Settings -> Connectors -> Advanced -> Developer mode
-
-2. **Add your server:**
-
-   - Go to Connectors tab
-   - Add remote MCP server URL
-
-3. **Test in conversation:**
-   - Select Developer Mode from Plus menu
-   - Choose your connector
-   - Ask ChatGPT to use your tools
+1. **Enable Developer Mode:** Settings → Connectors → Advanced → Developer mode
+2. **Add your server:** Connectors tab → Add remote MCP server URL
+3. **Test:** Select Developer Mode from Plus menu → Choose connector → Use tools
 
 **Prompting tips:**
-
 - Be explicit: "Use the weather-app connector's get-weather tool..."
 - Disallow alternatives: "Do not use built-in tools, only use my connector"
 - Specify input: "Call get-weather with { city: 'Tokyo' }"
 
-**Dual-Protocol Note**: When using `type: "mcpApps"` in your server configuration, your widgets automatically work in both ChatGPT (via Apps SDK) and MCP Apps clients (like Claude Desktop, Goose). You can test the same widget in multiple clients without any code changes!
+**Dual-protocol note:** With `type: "mcpApps"`, widgets work in both ChatGPT and MCP Apps clients without code changes.
 
 ## Best Practices
 
 ### Schema Design
 
-Use descriptive schemas:
-
 ```typescript
-// Good
+// Good - descriptive
 const schema = z.object({
   city: z.string().describe("City name (e.g., Tokyo, Paris)"),
   temperature: z.number().min(-50).max(60).describe("Temp in Celsius"),
 });
 
-// Bad
+// Bad - no descriptions
 const schema = z.object({
   city: z.string(),
   temp: z.number(),
@@ -674,11 +462,8 @@ const schema = z.object({
 
 ### Theme Support
 
-Always support both themes:
-
 ```tsx
 const { theme } = useWidget();
-
 const bgColor = theme === "dark" ? "bg-gray-900" : "bg-white";
 const textColor = theme === "dark" ? "text-white" : "text-gray-900";
 ```
@@ -690,17 +475,13 @@ Always check `isPending` first:
 ```tsx
 const { props, isPending } = useWidget<MyProps>();
 
-if (isPending) {
-  return <LoadingSpinner />;
-}
-
-// Now safe to access props.field
+if (isPending) return <LoadingSpinner />;
 return <div>{props.field}</div>;
 ```
 
 ### Widget Focus
 
-Keep widgets focused:
+Keep widgets focused on one thing:
 
 ```typescript
 // Good: Single purpose
@@ -712,15 +493,11 @@ export const widgetMetadata: WidgetMetadata = {
 // Bad: Too many responsibilities
 export const widgetMetadata: WidgetMetadata = {
   description: "Weather, forecast, map, news, and more",
-  props: z.object({
-    /* many fields */
-  }),
+  props: z.object({ /* many fields */ }),
 };
 ```
 
 ### Error Handling
-
-Handle errors gracefully:
 
 ```tsx
 const { callTool } = useWidget();
@@ -741,8 +518,6 @@ const fetchData = async () => {
 
 ### Production Setup
 
-Set base URL for production:
-
 ```typescript
 const server = new MCPServer({
   name: "my-app",
@@ -754,116 +529,27 @@ const server = new MCPServer({
 ### Environment Variables
 
 ```env
-# Server URL
 MCP_URL=https://myserver.com
-
-# For static deployments
 MCP_SERVER_URL=https://myserver.com/api
 CSP_URLS=https://cdn.example.com,https://api.example.com
 ```
 
-**Variable usage:**
-
-- `MCP_URL`: Base URL for widget assets and CSP
-- `MCP_SERVER_URL`: MCP server URL for tool calls (static deployments)
-- `CSP_URLS`: Additional domains for Content Security Policy
-
 ## Deployment
 
-### Deploy to mcp-use Cloud
-
 ```bash
-# Login
 npx mcp-use login
-
-# Deploy
-yarn deploy
+npm run deploy
 ```
 
-### Build for Production
-
+Build for production:
 ```bash
-# Build
-yarn build
-
-# Start
-yarn start
-```
-
-Build process:
-
-- Compiles TypeScript
-- Bundles React widgets
-- Optimizes assets
-- Generates production HTML
-
-## Common Patterns
-
-### Data Fetching Widget
-
-```tsx
-const DataWidget: React.FC = () => {
-  const { props, isPending, callTool } = useWidget();
-
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
-
-  const refresh = async () => {
-    await callTool("fetch-data", { id: props.id });
-  };
-
-  return (
-    <div>
-      <h1>{props.title}</h1>
-      <button onClick={refresh}>Refresh</button>
-    </div>
-  );
-};
-```
-
-### Stateful Widget
-
-```tsx
-const CounterWidget: React.FC = () => {
-  const { state, setState } = useWidget();
-
-  const increment = async () => {
-    await setState({
-      count: (state?.count || 0) + 1,
-    });
-  };
-
-  return (
-    <div>
-      <p>Count: {state?.count || 0}</p>
-      <button onClick={increment}>+1</button>
-    </div>
-  );
-};
-```
-
-### Themed Widget
-
-```tsx
-const ThemedWidget: React.FC = () => {
-  const { theme } = useWidget();
-
-  return (
-    <div className={theme === "dark" ? "dark-theme" : "light-theme"}>
-      Content
-    </div>
-  );
-};
+npm run build
+npm start
 ```
 
 ## Troubleshooting
 
 ### Widget Not Appearing
-
-**Problem:** Widget file exists but tool doesn't appear
-
-**Solutions:**
 
 - Ensure `.tsx` extension
 - Export `widgetMetadata` object
@@ -873,10 +559,6 @@ const ThemedWidget: React.FC = () => {
 
 ### Props Not Received
 
-**Problem:** Component receives empty props
-
-**Solutions:**
-
 - Check `isPending` first (props empty while pending)
 - Use `useWidget()` hook (not React props)
 - Verify `widgetMetadata.props` is valid Zod schema
@@ -884,96 +566,58 @@ const ThemedWidget: React.FC = () => {
 
 ### CSP Errors
 
-**Problem:** Widget loads but assets fail
-
-**Solutions:**
-
 - Set `baseUrl` in server config
-- Add domains to CSP via `metadata.csp` (modern) or `appsSdkMetadata['openai/widgetCSP']` (legacy)
+- Add domains to CSP via `metadata.csp`
 - Use HTTPS for all resources
 - Check browser console for CSP violations
 
-### CSP Errors in Production
+### Protocol Compatibility
 
-**Problem:** Resources blocked by Content Security Policy in production
-
-**Solutions:**
-1. **Check browser console** for CSP violation messages
-2. **Add missing domains** to your CSP configuration:
-   ```typescript
-   metadata: {
-     csp: {
-       connectDomains: ['https://api.example.com'], // Add missing API domain
-       resourceDomains: ['https://cdn.example.com'], // Add missing CDN domain
-     }
-   }
-   ```
-3. **Use exact domains** - avoid wildcards in production
-4. **Test in Inspector** before deploying to catch CSP issues early
-5. **Environment variable alternative**: Set `CSP_URLS` environment variable with comma-separated domains
-
-### Protocol Compatibility Issues
-
-**Problem:** Widget works in ChatGPT but not MCP Apps clients (or vice versa)
-
-**Solutions:**
-- **Use `type: "mcpApps"`** for dual-protocol support (recommended)
-- **Check `baseUrl`** is set correctly in server config
-- **Verify metadata format**: Use `metadata` (camelCase) not `appsSdkMetadata` (snake_case) for dual-protocol
-- **Test in Inspector** which supports both protocols
-
-**When to use each type:**
-- `type: "mcpApps"` - Maximum compatibility (recommended)
-- `type: "appsSdk"` - ChatGPT only (use if you need ChatGPT-specific features not in spec)
-
-## Learn More
-
-- **Documentation**: https://docs.mcp-use.com
-- **MCP Apps Standard**: https://docs.mcp-use.com/typescript/server/mcp-apps (dual-protocol guide)
-- **Widget Guide**: https://docs.mcp-use.com/typescript/server/ui-widgets
-- **Apps SDK Tutorial**: https://docs.mcp-use.com/typescript/server/creating-apps-sdk-server
-- **Templates**: https://docs.mcp-use.com/typescript/server/templates
-- **ChatGPT Apps Flow**: https://docs.mcp-use.com/guides/chatgpt-apps-flow
-- **Inspector Debugging**: https://docs.mcp-use.com/inspector/debugging-chatgpt-apps
-- **GitHub**: https://github.com/mcp-use/mcp-use
+- Use `type: "mcpApps"` for dual-protocol support
+- Set `baseUrl` correctly in server config
+- Use `metadata` (camelCase) not `appsSdkMetadata` for dual-protocol
+- Test in Inspector which supports both protocols
 
 ## Quick Reference
 
 **Commands:**
-
 - `npx create-mcp-use-app my-app --template mcp-apps` - Bootstrap
-- `yarn dev` - Development with hot reload
-- `yarn build` - Build for production
-- `yarn start` - Run production server
-- `yarn deploy` - Deploy to mcp-use Cloud
+- `npm run dev` - Development with hot reload
+- `npm run build` - Build for production
+- `npm start` - Run production server
+- `npm run deploy` - Deploy to mcp-use Cloud
 
 **Widget structure:**
-
 - `resources/widget-name.tsx` - Single file widget
 - `resources/widget-name/widget.tsx` - Folder-based widget entry
 - `public/` - Static assets
 
 **Widget metadata:**
-
-- `description` - Widget description
-- `props` - Zod schema for input
+- `description` - Widget description (required)
+- `props` - Zod schema for input (required)
 - `exposeAsTool` - Auto-register as tool (default: true)
-- `metadata` - Unified config (dual-protocol, recommended)
-- `metadata.csp` - Content Security Policy configuration
-- `appsSdkMetadata` - ChatGPT-specific overrides (optional)
+- `metadata` - Unified config (dual-protocol)
+- `metadata.csp` - Content Security Policy
 
-**CSP fields:**
-
-- `connectDomains` - APIs to call
-- `resourceDomains` - Static assets to load
-- `frameDomains` - Iframes to embed
-- `scriptDirectives` - Script policies
-
-**useWidget hook:**
-
+**useWidget returns:**
 - `props` - Widget input parameters
 - `isPending` - Loading state flag
 - `state, setState` - Persistent state
 - `callTool` - Call other tools
 - `theme` - Current theme (light/dark)
 - `displayMode, requestDisplayMode` - Display control
+
+## References
+
+- [Widget Patterns](references/widget-patterns.md) - Complex widgets, data fetching, state, theming examples
+- [CSP and Metadata](references/csp-and-metadata.md) - Detailed CSP, legacy format, migration guide
+- [Components API](references/components-api.md) - Full McpUseProvider, Image, ErrorBoundary API
+
+## Learn More
+
+- Documentation: https://docs.mcp-use.com
+- MCP Apps Standard: https://docs.mcp-use.com/typescript/server/mcp-apps
+- Widget Guide: https://docs.mcp-use.com/typescript/server/ui-widgets
+- ChatGPT Apps Flow: https://docs.mcp-use.com/guides/chatgpt-apps-flow
+- Inspector Debugging: https://docs.mcp-use.com/inspector/debugging-chatgpt-apps
+- GitHub: https://github.com/mcp-use/mcp-use
