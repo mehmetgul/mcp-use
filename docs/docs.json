@@ -547,6 +547,7 @@
                 "pages": [
                   "typescript/server/index",
                   "typescript/server/configuration",
+                  "typescript/server/cli-reference",
                   {
                     "group": "Core Components",
                     "icon": "box",

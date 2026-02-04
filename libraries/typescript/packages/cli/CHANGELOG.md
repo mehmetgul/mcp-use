@@ -1,5 +1,62 @@
 # @mcp-use/cli
 
+## 2.13.1-canary.3
+
+### Patch Changes
+
+- Updated dependencies [f7ca602]
+  - mcp-use@1.16.4-canary.3
+  - @mcp-use/inspector@0.18.4-canary.3
+
+## 2.13.1-canary.2
+
+### Patch Changes
+
+- Updated dependencies [03094a1]
+  - @mcp-use/inspector@0.18.4-canary.2
+  - mcp-use@1.16.4-canary.2
+
+## 2.13.1-canary.1
+
+### Patch Changes
+
+- d0239d2: fix(mcp-use): release canary versions
+- Updated dependencies [d0239d2]
+  - @mcp-use/inspector@0.18.4-canary.1
+  - mcp-use@1.16.4-canary.1
+
+## 2.13.1-canary.0
+
+### Patch Changes
+
+- 7c2d7e3: fix(cli): use build manifest entryPoint for start command and support multiple server output paths
+
+  **Build Command Improvements:**
+  - Find source server file before TypeScript compilation
+  - Determine compiled entry point location based on tsconfig patterns
+  - Write `entryPoint` to `dist/mcp-use.json` manifest for reliable server location
+  - Handle multiple possible output paths:
+    - `dist/index.js` (rootDir set to project root)
+    - `dist/src/index.js` (no rootDir, source in src/)
+    - Custom paths based on tsconfig configuration
+
+  **Start Command Improvements:**
+  - Read `entryPoint` from `dist/mcp-use.json` manifest for accurate server location
+  - Fallback to checking common server file locations if manifest doesn't exist:
+    - `dist/index.js`
+    - `dist/server.js`
+    - `dist/src/index.js`
+    - `dist/src/server.js`
+  - Clear error message when no built server file is found, listing all attempted locations
+
+  Commits: 116a3be4 (partial)
+
+- Updated dependencies [7c2d7e3]
+- Updated dependencies [7c2d7e3]
+- Updated dependencies [7c2d7e3]
+  - mcp-use@1.16.4-canary.0
+  - @mcp-use/inspector@0.18.4-canary.0
+
 ## 2.13.0
 
 ### Minor Changes
