@@ -1,5 +1,44 @@
 # mcp-use
 
+## 1.18.0-canary.3
+
+### Patch Changes
+
+- Updated dependencies [c93a061]
+  - @mcp-use/inspector@0.19.0-canary.3
+  - @mcp-use/cli@2.13.7-canary.3
+
+## 1.18.0-canary.2
+
+### Minor Changes
+
+- 4a2b65e: feat(inspector): enhance elicitation support with SEP-1330 enum schema variants
+
+### Patch Changes
+
+- Updated dependencies [4a2b65e]
+  - @mcp-use/inspector@0.19.0-canary.2
+  - @mcp-use/cli@2.13.7-canary.2
+
+## 1.18.0-canary.1
+
+### Patch Changes
+
+- 52cd2a8: feat(mcp): defer server callbacks to avoid render-phase updates
+  - @mcp-use/cli@2.13.7-canary.1
+  - @mcp-use/inspector@0.18.10-canary.1
+
+## 1.18.0-canary.0
+
+### Minor Changes
+
+- c3a452a: feat(server): added DNS rebinding protection support and updated documentation
+
+### Patch Changes
+
+- @mcp-use/cli@2.13.7-canary.0
+- @mcp-use/inspector@0.18.10-canary.0
+
 ## 1.17.4
 
 ### Patch Changes
