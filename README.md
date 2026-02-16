@@ -1,5 +1,6 @@
 <div align="center">
 &nbsp;
+
 <div align="center">
   <a href="https://mcp-use.com">
     <picture>
@@ -10,8 +11,9 @@
   </a>
 </div>
 &nbsp;
+
 <p align="center" style="max-width:600px; margin-bottom:40px">
-  <b>mcp-use</b> provides everything you need to build with <a href="https://modelcontextprotocol.io">Model Context Protocol</a> <br/> MCP servers, MCP clients and AI agents in 6 lines of code, in both <b>Python</b> and <b>TypeScript</b>.</p>
+  <b>mcp-use</b> is the fullstack MCP framework. Build <a href="https://modelcontextprotocol.io">MCP</a> Servers for AI Agents or MCP Apps for ChatGPT / Claude and MCP Clients.</p>
 <p align="center">
     <a href="https://github.com/mcp-use/mcp-use/stargazers" alt="GitHub stars">
         <img src="https://img.shields.io/github/stars/mcp-use/mcp-use?style=social" /></a>
@@ -19,8 +21,8 @@
         <img src="https://img.shields.io/github/license/mcp-use/mcp-use" /></a>
     <a href="https://mcp-use.com/docs" alt="Documentation">
         <img src="https://img.shields.io/badge/mcp--use-docs-red" /></a>
-    <a href="https://mcp-use.com" alt="Website">
-        <img src="https://img.shields.io/badge/cloud-mcp--use.com-blue" /></a>
+    <a href="https://manufact.com" alt="Website">
+        <img src="https://img.shields.io/badge/cloud-manufact.com-blue" /></a>
     <a href="https://x.com/mcpuse" alt="X follow mcp-use">
         <img src="https://img.shields.io/twitter/follow/mcp-use?style=social" /></a>
     <a href="https://discord.gg/XkNkSkMz3V" alt="Discord">
@@ -52,95 +54,189 @@
     <br/>
     <a href="https://inspector.mcp-use.com" alt="MCP Inspector Online">
       <img src="https://img.shields.io/badge/MCP%20Inspector-black" /></a>
-    <a href="https://mcp-use.com" alt="MCP Deploy">
+    <a href="https://manufact.com" alt="MCP Deploy">
       <img src="https://img.shields.io/badge/Deploy%20MCP-black" /></a>
 </p>
 </div>
 
 ---
 
-## Stack
+## What you can do
 
-- **🤖 MCP Agents** - AI agents that can use tools and reason across steps
-- **🔌 MCP Clients** - Connect any LLM to any MCP server
-- **🛠️ MCP Servers** - Build your own MCP servers
-- **🔍 MCP Inspector** - Web-based debugger for MCP servers
-- **🎨 MCP-UI Resources** - Build ChatGPT apps with interactive widgets
+- **Build** — mcp-use SDK: MCP Servers and MCP Apps
+- **Preview** — mcp-use Inspector: Test and debug your servers
+- **Deploy** — [Manufact](https://manufact.com): MCP Cloud — connect your GitHub repo and have it up and running in production with observability, metrics, logs, branch-deployments, and more
 
 ---
 
-<h2 align="left" style="border:0; margin-top:50px">🚀 What Do You Want to Build?</h2>
+## Links
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>🤖 Build an AI Agent</h3>
-      <p>Create intelligent agents that can use tools, browse the web, manage files, and more.</p>
-      <p>
-        <a href="#build-an-ai-agent">Quick Start ↓</a> | 
-        <a href="https://mcp-use.com/docs/python/agent/agent-configuration">Python Docs</a> | 
-        <a href="https://mcp-use.com/docs/typescript/agent/agent-configuration">TypeScript Docs</a>
-      </p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🔌 Use MCP Client</h3>
-      <p>Connect directly to MCP servers and call tools programmatically without an agent.</p>
-      <p>
-        <a href="#use-mcp-client">Quick Start ↓</a> | 
-        <a href="https://mcp-use.com/docs/python/client/client-configuration">Python Docs</a> | 
-        <a href="https://mcp-use.com/docs/typescript/client/client-configuration">TypeScript Docs</a>
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>🛠️ Create an MCP Server</h3>
-      <p>Build your own MCP servers with tools, resources, and prompts.</p>
-      <p>
-        <a href="#create-an-mcp-server">Quick Start ↓</a> |
-        <a href="https://mcp-use.com/docs/python/server/index">Python Docs</a> |
-        <a href="https://mcp-use.com/docs/typescript/server/getting-started">TypeScript Docs</a>
-      </p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🔍 Debug with Inspector</h3>
-      <p>Test, debug, and explore your MCP servers interactively.</p>
-      <p>
-        <a href="#use-the-inspector">Quick Start ↓</a> | 
-        <a href="https://mcp-use.com/docs/inspector/index">Inspector Docs</a> | 
-        <a href="https://inspector.mcp-use.com">MCP Inspector online</a>
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>🎨 Build ChatGPT Apps</h3>
-      <p>Create interactive UIs with mcp-ui, react and live reload.</p>
-      <p>
-        <a href="https://mcp-use.com/docs/typescript/server/ui-widgets">Quick Start</a> | 
-        <a href="https://mcp-use.com/docs/typescript/server/templates">Templates</a>
-      </p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>☁️ Deploy to MCP Cloud</h3>
-      <p>Deploy and manage your MCP agents and servers in the cloud.</p>
-      <p>
-        <a href="https://mcp-use.com/docs/home/mcp101">Quick Start</a> | 
-        <a href="https://mcp-use.com">Cloud ↗</a>
-      </p>
-    </td>
-  </tr>
-</table>
+- [Docs](https://mcp-use.com/docs)
+- Quickstarts: [TypeScript](https://mcp-use.com/docs/typescript/getting-started/quickstart) | [Python](https://mcp-use.com/docs/python/getting-started/quickstart)
+- [Skills (for coding agents)](https://skills.sh/?q=mcp-use)
+
+Since this is a monorepo, see the sub-package READMEs for detailed docs:
+
+- [Python library →](./libraries/python/)
+- [TypeScript library →](./libraries/typescript/)
 
 ---
 
-<h2 style="border:0; margin-top:30px;">📦 Quick Start</h2>
+## Quick Start — MCP Servers
 
-### Build an AI Agent
+### <img src="./static/typescript.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> TypeScript
 
-Create an AI agent that can use MCP tools to accomplish complex tasks.
+Scaffold a new project:
 
-#### <img src="./static/python.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Python
+```bash
+npx create-mcp-use-app my-server
+```
+
+Or create a server manually:
+
+```typescript
+import { MCPServer, text } from "mcp-use/server";
+import { z } from "zod";
+
+const server = new MCPServer({
+  name: "my-server",
+  version: "1.0.0",
+});
+
+server.tool({
+  name: "get_weather",
+  description: "Get weather for a city",
+  schema: z.object({ city: z.string() }),
+}, async ({ city }) => {
+  return text(`Temperature: 72°F, Condition: sunny, City: ${city}`);
+});
+
+await server.listen(3000);
+// Inspector at http://localhost:3000/inspector
+```
+
+[**→ Full TypeScript Server Documentation**](https://mcp-use.com/docs/typescript/server/getting-started)
+
+### <img src="./static/python.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Python
+
+```bash
+pip install mcp-use
+```
+
+```python
+from mcp_use import MCPServer
+
+server = MCPServer(
+    name="my-server",
+    version="1.0.0",
+)
+
+@server.tool()
+def get_weather(city: str) -> dict:
+    """Get weather for a city"""
+    return {"temperature": 72, "condition": "sunny", "city": city}
+
+if __name__ == "__main__":
+    server.run()
+```
+
+[**→ Full Python Server Documentation**](https://mcp-use.com/docs/python/server/index)
+
+---
+
+## MCP Apps
+
+MCP Apps let you build interactive widgets that work across Claude, ChatGPT, and other MCP clients — write once, run everywhere.
+
+```typescript
+import { MCPServer, text } from "mcp-use/server";
+import { z } from "zod";
+
+const server = new MCPServer({
+  name: "weather-app",
+  version: "1.0.0",
+  mcpApps: true,
+});
+
+server.tool({
+  name: "get_weather",
+  description: "Get weather for a city",
+  schema: z.object({ city: z.string() }),
+  widget: "weather-widget",
+}, async ({ city }) => {
+  return text(`Temperature: 72°F, Condition: sunny, City: ${city}`);
+});
+
+await server.listen(3000);
+```
+
+[**→ MCP Apps Documentation**](https://mcp-use.com/docs/typescript/server/ui-widgets)
+
+---
+
+## Inspector
+
+The mcp-use Inspector lets you test and debug your MCP servers interactively.
+
+**Auto-included** when using `server.listen()`:
+
+```typescript
+server.listen(3000);
+// Inspector at http://localhost:3000/inspector
+```
+
+**Standalone** — inspect any MCP server:
+
+```bash
+npx @mcp-use/inspector --url http://localhost:3000/sse
+```
+
+[**→ Inspector Documentation**](https://mcp-use.com/docs/inspector/index)
+
+---
+
+## Deploy
+
+Deploy your MCP server to production:
+
+```bash
+npx @mcp-use/cli login
+npx @mcp-use/cli deploy
+```
+
+Or connect your GitHub repo on [manufact.com](https://manufact.com) — production-ready with observability, metrics, logs, and branch-deployments.
+
+---
+
+## 📦 Package Overview
+
+This monorepo contains multiple packages for both Python and TypeScript:
+
+### Python Packages
+
+| Package     | Description                           | Version                                                                                 |
+| ----------- | ------------------------------------- | --------------------------------------------------------------------------------------- |
+| **mcp-use** | Complete MCP client and agent library | [![PyPI](https://img.shields.io/pypi/v/mcp_use.svg)](https://pypi.org/project/mcp_use/) |
+
+### TypeScript Packages
+
+| Package                | Description                                     | Version                                                                                                         |
+| ---------------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **mcp-use**            | Core framework for clients, agents, and servers | [![npm](https://img.shields.io/npm/v/mcp-use.svg)](https://www.npmjs.com/package/mcp-use)                       |
+| **@mcp-use/cli**       | Build tool with hot reload and auto-inspector   | [![npm](https://img.shields.io/npm/v/@mcp-use/cli.svg)](https://www.npmjs.com/package/@mcp-use/cli)             |
+| **@mcp-use/inspector** | Web-based debugger for MCP servers              | [![npm](https://img.shields.io/npm/v/@mcp-use/inspector.svg)](https://www.npmjs.com/package/@mcp-use/inspector) |
+| **create-mcp-use-app** | Project scaffolding tool                        | [![npm](https://img.shields.io/npm/v/create-mcp-use-app.svg)](https://www.npmjs.com/package/create-mcp-use-app) |
+
+---
+
+## Legacy: MCP Agent & Client
+
+mcp-use also provides a full MCP Agent and Client implementation.
+
+<details>
+<summary>Build an AI Agent</summary>
+
+### <img src="./static/python.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Python
 
 ```bash
 pip install mcp-use langchain-openai
@@ -152,7 +248,6 @@ from langchain_openai import ChatOpenAI
 from mcp_use import MCPAgent, MCPClient
 
 async def main():
-    # Configure MCP server
     config = {
         "mcpServers": {
             "filesystem": {
@@ -174,7 +269,7 @@ asyncio.run(main())
 
 [**→ Full Python Agent Documentation**](./libraries/python/README.md#quick-start)
 
-#### <img src="./static/typescript.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Typescript
+### <img src="./static/typescript.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> TypeScript
 
 ```bash
 npm install mcp-use @langchain/openai
@@ -185,7 +280,6 @@ import { ChatOpenAI } from "@langchain/openai";
 import { MCPAgent, MCPClient } from "mcp-use";
 
 async function main() {
-  // Configure MCP server
   const config = {
     mcpServers: {
       filesystem: {
@@ -208,13 +302,12 @@ main();
 
 [**→ Full TypeScript Agent Documentation**](./libraries/typescript/README.md#-quick-start)
 
----
+</details>
 
-### Use MCP Client
+<details>
+<summary>Use MCP Client</summary>
 
-Connect to MCP servers directly without an AI agent for programmatic tool access.
-
-#### <img src="./static/python.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Python
+### <img src="./static/python.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Python
 
 ```python
 import asyncio
@@ -244,7 +337,7 @@ asyncio.run(main())
 
 [**→ Python Client Documentation**](./libraries/python/README.md#direct-tool-calls-without-llm)
 
-#### <img src="./static/typescript.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Typescript
+### <img src="./static/typescript.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> TypeScript
 
 ```typescript
 import { MCPClient } from "mcp-use";
@@ -274,244 +367,7 @@ main();
 
 [**→ TypeScript Client Documentation**](./libraries/typescript/README.md#basic-usage)
 
----
-
-### Create an MCP Server
-
-Build your own MCP server with custom tools, resources, and prompts.
-
-#### <img src="./static/typescript.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Typescript
-
-```bash
-npx create-mcp-use-app my-server
-cd my-server
-npm install
-```
-
-```typescript
-import { MCPServer, text } from "mcp-use/server";
-import { z } from "zod";
-
-const server = new MCPServer({
-  name: "my-server",
-  version: "1.0.0",
-  description: "My custom MCP server",
-});
-
-// Define a tool
-server.tool(
-  {
-    name: "get_weather",
-    description: "Get weather for a city",
-    schema: z.object({
-      city: z.string().describe("City name"),
-    }),
-  },
-  async ({ city }) => {
-    return text(`Temperature: 72°F, Condition: sunny, City: ${city}`);
-  }
-);
-
-// Start server with auto-inspector
-server.listen(3000);
-// 🎉 Inspector at http://localhost:3000/inspector
-```
-
-[**→ Full TypeScript Server Documentation**](./libraries/typescript/README.md#%EF%B8%8F-mcp-server-framework)
-
-#### <img src="./static/python.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Python
-
-**Coming Soon!** For now, please use the TypeScript implementation to create MCP servers.
-
----
-
-### Use the Inspector
-
-Debug and test your MCP servers with the interactive web-based inspector.
-
-#### Automatic (with mcp-use server)
-
-When you create a server with `mcp-use`, the inspector is automatically available:
-
-```typescript
-server.listen(3000);
-// Inspector automatically at: http://localhost:3000/inspector
-```
-
-#### Standalone
-
-Inspect any MCP server via CLI:
-
-```bash
-npx @mcp-use/inspector --url http://localhost:3000/sse
-```
-
-**Features:**
-
-- 🔍 Test tools interactively with live execution
-- 📊 Monitor connection status and server health
-- 🔐 Handle OAuth flows automatically
-- 💾 Persistent sessions with localStorage
-
-[**→ Full Inspector Documentation**](./libraries/typescript/packages/inspector/README.md)
-
----
-
-## 📚 More Examples & Documentation
-
-### Example Use Cases
-
-- **[Web Browsing with Playwright](./libraries/python/README.md#web-browsing-with-playwright)** - Automate browser tasks
-- **[Multi-Server Setup](./libraries/python/README.md#multi-server-support)** - Use multiple MCP servers together
-- **[Streaming Responses](./libraries/python/README.md#streaming-agent-output)** - Real-time agent output
-- **[UI Widgets](./libraries/typescript/README.md#building-custom-ui-widgets)** - Build interactive React components
-- **[AI SDK Integration](./libraries/typescript/README.md#-ai-sdk-integration)** - Vercel AI SDK for Next.js apps
-
-### Complete Documentation
-
-- **[📘 Python Documentation](./libraries/python/README.md)** - Complete Python guide
-- **[📗 TypeScript Documentation](./libraries/typescript/README.md)** - Complete TypeScript guide
-- **[🔍 Inspector Documentation](./libraries/typescript/packages/inspector/README.md)** - Inspector guide
-- **[🌐 Online Docs](https://mcp-use.com/docs)** - Full online documentation
-
----
-
-## ✨ Key Features
-
-<table>
-  <tr>
-    <th width="200">Feature</th>
-    <th>Description</th>
-    <th>Python</th>
-    <th>TypeScript</th>
-  </tr>
-  <tr>
-    <td><strong>🤖 MCP Agents</strong></td>
-    <td>AI agents with tool access and multi-step reasoning</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td><strong>🔌 MCP Clients</strong></td>
-    <td>Direct connection to any MCP server</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td><strong>🛠️ MCP Servers</strong></td>
-    <td>Build custom MCP servers</td>
-    <td align="center">🔜</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td><strong>🔍 Inspector</strong></td>
-    <td>Web-based debugging tool</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td><strong>🎨 UI Widgets</strong></td>
-    <td>Build interactive React UIs</td>
-    <td align="center">➖</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td><strong>🌐 Multi-Server</strong></td>
-    <td>Connect to multiple servers simultaneously</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td><strong>📡 Streaming</strong></td>
-    <td>Real-time streaming responses</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td><strong>📊 Observability</strong></td>
-    <td>Built-in Langfuse integration</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td><strong>🔐 OAuth Support</strong></td>
-    <td>Built-in OAuth flow handling</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td><strong>🛡️ Tool Control</strong></td>
-    <td>Restrict access to specific tools</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-</table>
-
----
-
-## 📦 Package Overview
-
-This monorepo contains multiple packages for both Python and TypeScript:
-
-### Python Packages
-
-| Package     | Description                           | Version                                                                                 |
-| ----------- | ------------------------------------- | --------------------------------------------------------------------------------------- |
-| **mcp-use** | Complete MCP client and agent library | [![PyPI](https://img.shields.io/pypi/v/mcp_use.svg)](https://pypi.org/project/mcp_use/) |
-
-### TypeScript Packages
-
-| Package                | Description                                     | Version                                                                                                         |
-| ---------------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| **mcp-use**            | Core framework for clients, agents, and servers | [![npm](https://img.shields.io/npm/v/mcp-use.svg)](https://www.npmjs.com/package/mcp-use)                       |
-| **@mcp-use/cli**       | Build tool with hot reload and auto-inspector   | [![npm](https://img.shields.io/npm/v/@mcp-use/cli.svg)](https://www.npmjs.com/package/@mcp-use/cli)             |
-| **@mcp-use/inspector** | Web-based debugger for MCP servers              | [![npm](https://img.shields.io/npm/v/@mcp-use/inspector.svg)](https://www.npmjs.com/package/@mcp-use/inspector) |
-| **create-mcp-use-app** | Project scaffolding tool                        | [![npm](https://img.shields.io/npm/v/create-mcp-use-app.svg)](https://www.npmjs.com/package/create-mcp-use-app) |
-
----
-
-## 🏗️ Repository Structure
-
-```
-mcp-use/
-├── libraries/
-│   ├── python/              → Python implementation
-│   │   ├── mcp_use/         → Core library
-│   │   ├── examples/        → Python examples
-│   │   └── docs/            → Python documentation
-│   │
-│   └── typescript/          → TypeScript implementation
-│       └── packages/
-│           ├── mcp-use/     → Core framework
-│           ├── cli/         → Build tool
-│           ├── inspector/   → Web inspector
-│           └── create-mcp-use-app/  → Scaffolding
-└── README.md               → This file
-```
-
----
-
-## 🌟 Why MCP-Use?
-
-### Complete Vertical Stack
-
-Build everything from AI agents to servers - not just clients. Create the full MCP ecosystem in your preferred language.
-
-### Language Flexibility
-
-Choose Python for ML/data workflows or TypeScript for web applications. Same great features, different languages.
-
-### Production Ready
-
-Includes observability, streaming, multi-server support, sandboxing, and tool access controls out of the box.
-
-### Developer Experience
-
-Hot reload, TypeScript/Python type safety, built-in inspector, and comprehensive documentation.
-
-### Open Source
-
-MIT licensed and community-driven. Contribute, fork, or extend as needed.
+</details>
 
 ---
 
@@ -520,7 +376,7 @@ MIT licensed and community-driven. Contribute, fork, or extend as needed.
 - **💬 Discord**: [Join our community](https://discord.gg/XkNkSkMz3V)
 - **🐛 GitHub Issues**: [Report bugs or request features](https://github.com/mcp-use/mcp-use/issues)
 - **📖 Documentation**: [mcp-use.com/docs](https://mcp-use.com/docs)
-- **🌐 Website**: [mcp-use.com](https://mcp-use.com)
+- **🌐 Website**: [manufact.com](https://manufact.com)
 - **🐦 Twitter**: Follow [@pietrozullo](https://x.com/pietrozullo) and [@pederzh](https://x.com/pederzh)
 
 ---
@@ -584,4 +440,3 @@ Thanks to all our amazing contributors!
   <br/>
   <sub>San Francisco | Zürich</sub>
 </div>
-# Test badge update fix - 1771223307
