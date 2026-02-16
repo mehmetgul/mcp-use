@@ -1,5 +1,99 @@
 # mcp-use
 
+## 1.19.0-canary.6
+
+### Patch Changes
+
+- 8774ef6: fix(inspector): enhance MCPAppsRenderer and OpenAIComponentRenderer with loading states and spinner
+  - Updated MCPAppsRenderer to include a loading spinner during widget initialization, improving user feedback.
+  - Introduced a new `isReady` state to manage the loading state effectively.
+  - Enhanced OpenAIComponentRenderer to adjust display properties based on the new configuration for better responsiveness.
+  - Added a maximum width for the Picture-in-Picture mode in MCP_APPS_CONFIG for improved layout control.
+  - Refactored iframe loading handling to ensure proper state management and user experience during loading phases.
+
+- Updated dependencies [8774ef6]
+  - @mcp-use/inspector@0.20.0-canary.6
+  - @mcp-use/cli@2.13.8-canary.6
+
+## 1.19.0-canary.5
+
+### Patch Changes
+
+- 5823280: Fix error() return type to be compatible with tool callbacks that use outputSchema
+  - @mcp-use/cli@2.13.8-canary.5
+  - @mcp-use/inspector@0.20.0-canary.5
+
+## 1.19.0-canary.4
+
+### Patch Changes
+
+- 21b3c0b: fix(logging): enhance logging consistency and add tests for logLevel behavior
+  - Improved logging consistency across React components by ensuring all console calls are routed through the Logger class.
+  - Added comprehensive tests for Logger configuration, including log level filtering and silent mode behavior.
+  - Updated useMcp hook tests to validate logLevel options and their interactions.
+  - @mcp-use/cli@2.13.8-canary.4
+  - @mcp-use/inspector@0.20.0-canary.4
+
+## 1.19.0-canary.3
+
+### Patch Changes
+
+- aa81040: feat(mcp): implement direct stdio connector handling in Node.js client
+  - Added support for handling the stdio connector directly within the Node.js MCPClient, allowing for command and argument configuration
+  - Updated the loadConfigFile function to dynamically import the fs module, preventing unnecessary inclusion in browser bundles
+  - Enhanced error handling to ensure that the stdio connector is only utilized in the appropriate environment, improving compatibility and clarity
+
+- aa81040: fix(vitest): add support for additional file extensions in Vitest configuration
+- aa81040: feat(inspector): improve loading state and UI feedback in OpenAIComponentRenderer
+  - Replaced shimmer animation with a Spinner component for a more consistent loading experience
+  - Introduced a skeleton loading state that only displays on the initial load of the widget
+  - Updated ToolResultDisplay to adjust the order of view checks for better clarity
+  - Enhanced ToolsList to conditionally display parameter counts based on tool input schemas
+
+- aa81040: feat(inspector): add log copying functionality and enhance theme handling
+  - Implemented a new feature in IframeConsole to copy all logs to the clipboard, providing users with an easy way to access console logs
+  - Enhanced OpenAIComponentRenderer to manage widget readiness state and apply theme changes dynamically, improving user experience and visual consistency
+  - Updated ThemeProvider to synchronize theme application with Tailwind dark mode and OpenAI Apps SDK design tokens, ensuring a seamless theme transition
+  - Added a message signaling to the parent window when the widget is ready, enhancing communication between components
+
+- Updated dependencies [aa81040]
+- Updated dependencies [aa81040]
+- Updated dependencies [dea387a]
+- Updated dependencies [aa81040]
+- Updated dependencies [aa81040]
+- Updated dependencies [aa81040]
+  - @mcp-use/inspector@0.20.0-canary.3
+  - @mcp-use/cli@2.13.8-canary.3
+
+## 1.19.0-canary.2
+
+### Patch Changes
+
+- e8383a7: Fix prompt method to use generic type inference for callback parameters, matching the pattern used by the tool method
+- 1a8a2a6: Fix TypedCallToolResult type inference by replacing Omit<CallToolResult, "structuredContent"> with explicit property declarations
+  - @mcp-use/cli@2.13.8-canary.2
+  - @mcp-use/inspector@0.19.1-canary.2
+
+## 1.19.0-canary.1
+
+### Patch Changes
+
+- 8e3cfb8: fix: use correct MIME type for mcp_apps resource counting and disable telemetry in local test runs
+- Updated dependencies [8e3cfb8]
+  - @mcp-use/cli@2.13.8-canary.1
+  - @mcp-use/inspector@0.19.1-canary.1
+
+## 1.19.0-canary.0
+
+### Minor Changes
+
+- df8d269: fix(client): ensure client is 100% conformant
+
+### Patch Changes
+
+- @mcp-use/cli@2.13.8-canary.0
+- @mcp-use/inspector@0.19.1-canary.0
+
 ## 1.18.0
 
 ### Minor Changes

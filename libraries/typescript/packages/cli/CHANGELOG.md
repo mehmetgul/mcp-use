@@ -1,5 +1,77 @@
 # @mcp-use/cli
 
+## 2.13.8-canary.6
+
+### Patch Changes
+
+- 8774ef6: fix(inspector): enhance MCPAppsRenderer and OpenAIComponentRenderer with loading states and spinner
+  - Updated MCPAppsRenderer to include a loading spinner during widget initialization, improving user feedback.
+  - Introduced a new `isReady` state to manage the loading state effectively.
+  - Enhanced OpenAIComponentRenderer to adjust display properties based on the new configuration for better responsiveness.
+  - Added a maximum width for the Picture-in-Picture mode in MCP_APPS_CONFIG for improved layout control.
+  - Refactored iframe loading handling to ensure proper state management and user experience during loading phases.
+
+- Updated dependencies [8774ef6]
+  - @mcp-use/inspector@0.20.0-canary.6
+  - mcp-use@1.19.0-canary.6
+
+## 2.13.8-canary.5
+
+### Patch Changes
+
+- Updated dependencies [5823280]
+  - mcp-use@1.19.0-canary.5
+  - @mcp-use/inspector@0.20.0-canary.5
+
+## 2.13.8-canary.4
+
+### Patch Changes
+
+- Updated dependencies [21b3c0b]
+  - mcp-use@1.19.0-canary.4
+  - @mcp-use/inspector@0.20.0-canary.4
+
+## 2.13.8-canary.3
+
+### Patch Changes
+
+- Updated dependencies [aa81040]
+- Updated dependencies [aa81040]
+- Updated dependencies [aa81040]
+- Updated dependencies [aa81040]
+- Updated dependencies [dea387a]
+- Updated dependencies [aa81040]
+- Updated dependencies [aa81040]
+- Updated dependencies [aa81040]
+  - @mcp-use/inspector@0.20.0-canary.3
+  - mcp-use@1.19.0-canary.3
+
+## 2.13.8-canary.2
+
+### Patch Changes
+
+- Updated dependencies [e8383a7]
+- Updated dependencies [1a8a2a6]
+  - mcp-use@1.19.0-canary.2
+  - @mcp-use/inspector@0.19.1-canary.2
+
+## 2.13.8-canary.1
+
+### Patch Changes
+
+- 8e3cfb8: fix: use correct MIME type for mcp_apps resource counting and disable telemetry in local test runs
+- Updated dependencies [8e3cfb8]
+  - mcp-use@1.19.0-canary.1
+  - @mcp-use/inspector@0.19.1-canary.1
+
+## 2.13.8-canary.0
+
+### Patch Changes
+
+- Updated dependencies [df8d269]
+  - mcp-use@1.19.0-canary.0
+  - @mcp-use/inspector@0.19.1-canary.0
+
 ## 2.13.7
 
 ### Patch Changes

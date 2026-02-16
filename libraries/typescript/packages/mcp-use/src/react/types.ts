@@ -10,6 +10,7 @@ import type {
   ResourceTemplate,
   Tool,
 } from "@modelcontextprotocol/sdk/types.js";
+import type { OAuthClientProvider } from "@modelcontextprotocol/sdk/client/auth.js";
 import type { BrowserMCPClient } from "../client/browser.js";
 
 export type UseMcpOptions = {
@@ -86,8 +87,26 @@ export type UseMcpOptions = {
    * Custom headers that can be used to bypass auth
    */
   customHeaders?: Record<string, string>;
-  /** Whether to enable verbose debug logging to the console and the log state */
+  /**
+   * @deprecated Use `logLevel` instead. This option will be removed in a future version.
+   * Whether to enable verbose debug logging to the console and the log state.
+   * When `logLevel` is also set, `logLevel` takes precedence.
+   */
   debug?: boolean;
+  /**
+   * Log level for console output. When set, takes precedence over the `debug` option.
+   * Set to 'silent' to suppress ALL console logging (the `mcp.log` state array is still populated).
+   * @default undefined (falls back to 'info' or 'debug' when `debug: true`)
+   */
+  logLevel?:
+    | "silent"
+    | "error"
+    | "warn"
+    | "info"
+    | "http"
+    | "verbose"
+    | "debug"
+    | "silly";
   /** Auto retry connection if initial connection fails, with delay in ms (default: false) */
   autoRetry?: boolean | number;
   /** Auto reconnect if an established connection is lost, with delay in ms (default: 3000) */
@@ -174,6 +193,12 @@ export type UseMcpOptions = {
     params: ElicitRequestFormParams | ElicitRequestURLParams
   ) => Promise<ElicitResult>;
   /**
+   * @deprecated Use `onElicitation` instead. Will be removed in a future version.
+   */
+  elicitationCallback?: (
+    params: ElicitRequestFormParams | ElicitRequestURLParams
+  ) => Promise<ElicitResult>;
+  /**
    * Client information sent to the MCP server in the initialize request.
    * If not provided, defaults to mcp-use client info.
    */
@@ -189,6 +214,29 @@ export type UseMcpOptions = {
     }>;
     websiteUrl?: string;
   };
+  /**
+   * Optional custom fetch function to use for all MCP HTTP requests.
+   *
+   * When provided, this replaces the default global `fetch` for transport-level
+   * requests. Useful for adding custom auth retry logic, logging, or proxying.
+   *
+   * @example
+   * ```typescript
+   * useMcp({
+   *   url: 'http://localhost:3000/mcp',
+   *   fetch: myCustomFetch,
+   * })
+   * ```
+   */
+  fetch?: typeof globalThis.fetch;
+  /**
+   * Optional external OAuth client provider.
+   *
+   * When provided, useMcp will use this provider directly instead of creating
+   * BrowserOAuthClientProvider internally. This is useful for headless/testing
+   * runtimes where popup/redirect flows are not available.
+   */
+  authProvider?: OAuthClientProvider;
   /**
    * Initial server info to use from cache (internal use).
    * This will be displayed immediately while the actual server info is being fetched.
