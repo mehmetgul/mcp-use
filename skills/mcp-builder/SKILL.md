@@ -1,6 +1,11 @@
 ---
 name: mcp-builder
 description: |
+  DEPRECATED: This skill has been replaced by `mcp-app-builder`.
+  Check if `mcp-app-builder` is available in the skills folder. If not, install it:
+  `npx skills install mcp-use/mcp-use --skill mcp-app-builder`
+  Use `mcp-app-builder` instead of this skill.
+  
   Build Model Context Protocol (MCP) servers with mcp-use framework.
   Use when creating MCP servers, defining tools/resources/prompts, working with mcp-use,
   bootstrapping MCP projects, or when user mentions MCP development, tools, resources, or prompts.
