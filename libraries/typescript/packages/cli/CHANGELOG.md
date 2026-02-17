@@ -1,5 +1,37 @@
 # @mcp-use/cli
 
+## 2.13.10-canary.2
+
+### Patch Changes
+
+- 9ef0ba9: - fix(cli): add generate-types command for auto-generating TypeScript type definitions from tool schemas
+  - fix(mcp-use): add useCallTool hook for calling MCP tools with TanStack Query-like state management
+  - fix(mcp-use): add tool registry type generation utilities (generateToolRegistryTypes, zod-to-ts converter)
+  - fix(mcp-use): add type-safe helper functions for tool calls via generateHelpers
+  - fix(inspector): improve MCPAppsRenderer loading logic and enhance useWidget for iframe handling
+  - chore(create-mcp-use-app): update project template dependencies and TypeScript configuration
+  - docs: add comprehensive useCallTool documentation and update CLI reference with generate-types command
+- Updated dependencies [9ef0ba9]
+  - @mcp-use/inspector@0.21.0-canary.2
+  - mcp-use@1.19.2-canary.2
+
+## 2.13.10-canary.1
+
+### Patch Changes
+
+- Updated dependencies [894d21a]
+- Updated dependencies [894d21a]
+  - @mcp-use/inspector@0.21.0-canary.1
+  - mcp-use@1.19.2-canary.1
+
+## 2.13.10-canary.0
+
+### Patch Changes
+
+- Updated dependencies [1921562]
+  - mcp-use@1.19.2-canary.0
+  - @mcp-use/inspector@0.20.2-canary.0
+
 ## 2.13.9
 
 ### Patch Changes
