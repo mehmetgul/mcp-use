@@ -324,7 +324,32 @@ server.listen(3000);
 
 #### <img src="./static/python.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Python
 
-**Coming Soon!** For now, please use the TypeScript implementation to create MCP servers.
+```python
+from typing import Annotated
+
+from mcp.types import ToolAnnotations
+from pydantic import Field
+
+from mcp_use import MCPServer
+
+server = MCPServer(name="Weather Server", version="1.0.0")
+
+@server.tool(
+    name="get_weather",
+    description="Get current weather information for a location",
+    annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+)
+async def get_weather(
+    city: Annotated[str, Field(description="City name")],
+) -> str:
+    return f"Temperature: 72°F, Condition: sunny, City: {city}"
+
+# Start server with auto-inspector
+server.run(transport="streamable-http", port=8000)
+# 🎉 Inspector at http://localhost:8000/inspector
+```
+
+[**→ Full Python Server Documentation**](./libraries/python/README.md)
 
 ---
 

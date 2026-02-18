@@ -1,7 +1,9 @@
 from datetime import datetime
+from typing import Annotated
 
 from mcp.server.fastmcp import Context
 from mcp.types import ToolAnnotations
+from pydantic import Field
 
 from mcp_use import MCPServer
 
@@ -29,7 +31,7 @@ server = MCPServer(
     ),
     structured_output=True,
 )
-async def echo(message: str, context: Context) -> str:
+async def echo(message: Annotated[str, Field(description="The message to echo back")], context: Context) -> str:
     """Echoes back the message you provide."""
     return f"You said: {message}"
 
