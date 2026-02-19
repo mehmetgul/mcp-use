@@ -44,9 +44,7 @@
 ##  About
 
   <b>mcp-use</b> is the fullstack MCP framework
-  to build MCP Apps for ChatGPT & Claude and MCP Servers for AI Agents.
-
-## What you can do
+  to build MCP Apps for ChatGPT / Claude & MCP Servers for AI Agents.
 
 - **Build** with mcp-use SDK ([ts](https://www.npmjs.com/package/mcp-use) | [py](https://pypi.org/project/mcp_use/)): MCP Servers and MCP Spps
 - **Preview** on mcp-use MCP Inspector ([online](https://inspector.mcp-use.com/inspector) | [oss](https://github.com/mcp-use/mcp-use/tree/main/libraries/typescript/packages/inspector)): Test and debug your MCP Servers and Apps
