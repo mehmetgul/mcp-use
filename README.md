@@ -1,19 +1,22 @@
 <div align="center">
-&nbsp;
-
 <div align="center">
   <a href="https://mcp-use.com">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="./static/logo_white.svg">
       <source media="(prefers-color-scheme: light)" srcset="./static/logo_black.svg">
-      <img alt="mcp use logo" src="./static/logo_black.svg" width="50%" >
+      <img alt="mcp use logo" src="./static/logo_black.svg" width="60%" >
     </picture>
   </a>
 </div>
 &nbsp;
 
 <p align="center" style="max-width:600px; margin-bottom:40px">
-  <b>mcp-use</b> is the fullstack MCP framework. Build MCP Servers for AI Agents or MCP Apps for ChatGPT / Claude and MCP Clients.</p>
+  <b>mcp-use</b> is the fullstack MCP framework
+  <br>
+  to build MCP Apps for ChatGPT & Claude
+  <br>
+  and MCP Servers for AI Agents.
+  </p>
 <p align="center">
     <a href="https://mcp-use.com/docs" alt="Documentation">
         <img src="https://img.shields.io/badge/mcp--use-docs-blue?labelColor=white" /></a>
@@ -49,30 +52,21 @@
 
 ## What you can do
 
-- **Build** — mcp-use SDK: MCP Servers and MCP Apps
-- **Preview** — mcp-use Inspector: Test and debug your servers
-- **Deploy** — [Manufact](https://manufact.com): MCP Cloud — connect your GitHub repo and have it up and running in production with observability, metrics, logs, branch-deployments, and more
+- **Build** with mcp-use SDK ([ts](https://www.npmjs.com/package/mcp-use) | [py](https://pypi.org/project/mcp_use/)): MCP Servers and MCP Spps
+- **Preview** on mcp-use MCP Inspector ([online](https://inspector.mcp-use.com/inspector) | [oss](https://github.com/mcp-use/mcp-use/tree/main/libraries/typescript/packages/inspector)): Test and debug your MCP Servers and Apps
+- **Deploy** on [Manufact MCP Cloud](https://manufact.com): Connect your GitHub repo and have your MCP Server and App up and running in production with observability, metrics, logs, branch-deployments, and more
 
----
+## Documentation and skill
 
-## Links
-
-- [Docs](https://mcp-use.com/docs)
+Visit our [docs](https://mcp-use.com/docs), manually quickstart
 - Quickstarts: [TypeScript](https://mcp-use.com/docs/typescript/getting-started/quickstart) | [Python](https://mcp-use.com/docs/python/getting-started/quickstart)
 - [Skills (for coding agents)](https://skills.sh/?q=mcp-use)
 
-Since this is a monorepo, see the sub-package READMEs for detailed docs:
-
-- [Python library →](./libraries/python/)
-- [TypeScript library →](./libraries/typescript/)
-
----
-
-## Quick Start — MCP Servers
+## Quickstart: MCP Servers and MCP Apps
 
 ### <img src="./static/typescript.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> TypeScript
 
-Scaffold a new project:
+Build your first MCP Server or MPC App:
 
 ```bash
 npx create-mcp-use-app my-server
@@ -103,6 +97,35 @@ await server.listen(3000);
 
 [**→ Full TypeScript Server Documentation**](https://mcp-use.com/docs/typescript/server/getting-started)
 
+## MCP Apps
+
+MCP Apps let you build interactive widgets that work across Claude, ChatGPT, and other MCP clients — write once, run everywhere.
+
+```typescript
+import { MCPServer, text } from "mcp-use/server";
+import { z } from "zod";
+
+const server = new MCPServer({
+  name: "weather-app",
+  version: "1.0.0",
+  mcpApps: true,
+});
+
+server.tool({
+  name: "get_weather",
+  description: "Get weather for a city",
+  schema: z.object({ city: z.string() }),
+  widget: "weather-widget", // Reference your UI widget
+}, async ({ city }) => {
+  return text(`Temperature: 72°F, Condition: sunny, City: ${city}`);
+});
+
+await server.listen(3000);
+```
+
+Visit [**MCP Apps Documentation**](https://mcp-use.com/docs/typescript/server/ui-widgets)
+
+---
 ### <img src="./static/python.svg" height="14" style="margin-right:4px; top:-1px; position:relative;" align="center" /> Python
 
 ```bash
@@ -130,36 +153,6 @@ if __name__ == "__main__":
 
 ---
 
-## MCP Apps
-
-MCP Apps let you build interactive widgets that work across Claude, ChatGPT, and other MCP clients — write once, run everywhere.
-
-```typescript
-import { MCPServer, text } from "mcp-use/server";
-import { z } from "zod";
-
-const server = new MCPServer({
-  name: "weather-app",
-  version: "1.0.0",
-  mcpApps: true,
-});
-
-server.tool({
-  name: "get_weather",
-  description: "Get weather for a city",
-  schema: z.object({ city: z.string() }),
-  widget: "weather-widget",
-}, async ({ city }) => {
-  return text(`Temperature: 72°F, Condition: sunny, City: ${city}`);
-});
-
-await server.listen(3000);
-```
-
-[**→ MCP Apps Documentation**](https://mcp-use.com/docs/typescript/server/ui-widgets)
-
----
-
 ## Inspector
 
 The mcp-use Inspector lets you test and debug your MCP servers interactively.
@@ -171,13 +164,17 @@ server.listen(3000);
 // Inspector at http://localhost:3000/inspector
 ```
 
-**Standalone** — inspect any MCP server:
+**Online** when connecting to hosted MCP servers:
+<br>
+>Visit https://inspector.mcp-use.com
+
+**Standalone**: inspect any MCP server:
 
 ```bash
-npx @mcp-use/inspector --url http://localhost:3000/sse
+npx @mcp-use/inspector --url http://localhost:3000/mcp
 ```
 
-[**→ Inspector Documentation**](https://mcp-use.com/docs/inspector/index)
+Visit [**Inspector Documentation**](https://mcp-use.com/docs/inspector/index)
 
 ---
 
@@ -202,20 +199,20 @@ This monorepo contains multiple packages for both Python and TypeScript:
 
 | Package     | Description                           | Version                                                                                 |
 | ----------- | ------------------------------------- | --------------------------------------------------------------------------------------- |
-| **mcp-use** | Complete MCP client and agent library | [![PyPI](https://img.shields.io/pypi/v/mcp_use.svg)](https://pypi.org/project/mcp_use/) |
+| **mcp-use** | Complete MCP server and MCP agent SDK | [![PyPI](https://img.shields.io/pypi/v/mcp_use.svg)](https://pypi.org/project/mcp_use/) |
 
 ### TypeScript Packages
 
 | Package                | Description                                     | Version                                                                                                         |
 | ---------------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| **mcp-use**            | Core framework for clients, agents, and servers | [![npm](https://img.shields.io/npm/v/mcp-use.svg)](https://www.npmjs.com/package/mcp-use)                       |
+| **mcp-use**            | Core framework for MCP servers, MCP apps, and MCP agents | [![npm](https://img.shields.io/npm/v/mcp-use.svg)](https://www.npmjs.com/package/mcp-use)                       |
 | **@mcp-use/cli**       | Build tool with hot reload and auto-inspector   | [![npm](https://img.shields.io/npm/v/@mcp-use/cli.svg)](https://www.npmjs.com/package/@mcp-use/cli)             |
-| **@mcp-use/inspector** | Web-based debugger for MCP servers              | [![npm](https://img.shields.io/npm/v/@mcp-use/inspector.svg)](https://www.npmjs.com/package/@mcp-use/inspector) |
+| **@mcp-use/inspector** | Web-based previewer and debugger for MCP servers              | [![npm](https://img.shields.io/npm/v/@mcp-use/inspector.svg)](https://www.npmjs.com/package/@mcp-use/inspector) |
 | **create-mcp-use-app** | Project scaffolding tool                        | [![npm](https://img.shields.io/npm/v/create-mcp-use-app.svg)](https://www.npmjs.com/package/create-mcp-use-app) |
 
 ---
 
-## Legacy: MCP Agent & Client
+## Also: MCP Agent & Client
 
 mcp-use also provides a full MCP Agent and Client implementation.
 
@@ -394,7 +391,7 @@ Thanks to all our amazing contributors!
 ---
 
 <div align="center">
-  <strong>Built with ❤️ by the MCP-Use community</strong>
+  <strong>Built with ❤️ by Manufact team and the mcp-use community</strong>
   <br/>
   <sub>San Francisco | Zürich</sub>
 </div>
