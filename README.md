@@ -13,49 +13,35 @@
 &nbsp;
 
 <p align="center" style="max-width:600px; margin-bottom:40px">
-  <b>mcp-use</b> is the fullstack MCP framework. Build <a href="https://modelcontextprotocol.io">MCP</a> Servers for AI Agents or MCP Apps for ChatGPT / Claude and MCP Clients.</p>
+  <b>mcp-use</b> is the fullstack MCP framework. Build MCP Servers for AI Agents or MCP Apps for ChatGPT / Claude and MCP Clients.</p>
 <p align="center">
-    <a href="https://github.com/mcp-use/mcp-use/stargazers" alt="GitHub stars">
-        <img src="https://img.shields.io/github/stars/mcp-use/mcp-use?style=social" /></a>
+    <a href="https://mcp-use.com/docs" alt="Documentation">
+        <img src="https://img.shields.io/badge/mcp--use-docs-blue?labelColor=white" /></a>
+    <a href="https://manufact.com" alt="Website">
+        <img src="https://img.shields.io/badge/made by-manufact.com-blue" /></a>
     <a href="https://github.com/mcp-use/mcp-use/blob/main/LICENSE" alt="License">
         <img src="https://img.shields.io/github/license/mcp-use/mcp-use" /></a>
-    <a href="https://mcp-use.com/docs" alt="Documentation">
-        <img src="https://img.shields.io/badge/mcp--use-docs-red" /></a>
-    <a href="https://manufact.com" alt="Website">
-        <img src="https://img.shields.io/badge/cloud-manufact.com-blue" /></a>
-    <a href="https://x.com/mcpuse" alt="X follow mcp-use">
-        <img src="https://img.shields.io/twitter/follow/mcp-use?style=social" /></a>
     <a href="https://discord.gg/XkNkSkMz3V" alt="Discord">
         <img src="https://dcbadge.limes.pink/api/server/XkNkSkMz3V?style=flat" /></a>
     <br/>
-    <a href="https://github.com/mcp-use/mcp-use/tree/main/libraries/python" alt="Python repository">
-        <img src="https://img.shields.io/badge/pyhton-repo-grey?labelColor=white&logo=python" alt="Badge"></a>
+    <a href="https://mcp-use.com/docs/python" alt="Python docs">
+        <img src="https://img.shields.io/badge/pyhton-docs-blue?labelColor=white&logo=python" alt="Badge"></a>
     <a href="https://pypi.org/project/mcp_use/" alt="PyPI Version">
         <img src="https://img.shields.io/pypi/v/mcp_use.svg"/></a>
     <a href="https://pypi.org/project/mcp_use/" alt="PyPI Downloads">
         <img src="https://static.pepy.tech/badge/mcp-use" /></a>
-    <a href="https://mcp-use.com/docs/python" alt="Python Documentation">
-        <img src="https://img.shields.io/badge/python-docs-red" /></a>
     <a href="https://github.com/mcp-use/mcp-use/actions/workflows/conformance.yml" alt="Python MCP Conformance">
         <img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/tonxxd/6edf670f0446dc9f7a1f32d6bfda2b70/raw/python-conformance.json" /></a>
     <br/>
-    <a href="https://github.com/mcp-use/mcp-use/tree/main/libraries/typescript" alt="Typescript Documentation">
-        <img src="https://img.shields.io/badge/typescript-repo-grey?labelColor=white&logo=typescript" alt="Badge"></a>
+    <a href="https://mcp-use.com/docs/typescript" alt="Typescript Documentation">
+        <img src="https://img.shields.io/badge/typescript-docs-blue?labelColor=white&logo=typescript" alt="Badge"></a>
     <a href="https://www.npmjs.com/package/mcp-use" alt="NPM Version">
         <img src="https://img.shields.io/npm/v/mcp-use.svg"/></a>
     <a href="https://www.npmjs.com/package/mcp-use" alt="NPM Downloads">
         <img src="https://img.shields.io/npm/dw/mcp-use.svg"/></a>
-    <a href="https://mcp-use.com/docs/typescript" alt="Typescript Documentation">
-        <img src="https://img.shields.io/badge/typescript-docs-red" /></a>
     <a href="https://github.com/mcp-use/mcp-use/actions/workflows/conformance.yml" alt="TypeScript MCP Conformance">
         <img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/tonxxd/6edf670f0446dc9f7a1f32d6bfda2b70/raw/typescript-conformance.json" /></a>
-    <a href="https://pkg.pr.new/~/mcp-use/mcp-use" alt="Open PR Package Preview">
-        <img src="https://pkg.pr.new/badge/mcp-use/mcp-use" /></a>
     <br/>
-    <a href="https://inspector.mcp-use.com" alt="MCP Inspector Online">
-      <img src="https://img.shields.io/badge/MCP%20Inspector-black" /></a>
-    <a href="https://manufact.com" alt="MCP Deploy">
-      <img src="https://img.shields.io/badge/Deploy%20MCP-black" /></a>
 </p>
 </div>
 
@@ -208,7 +194,7 @@ Or connect your GitHub repo on [manufact.com](https://manufact.com) — producti
 
 ---
 
-## 📦 Package Overview
+## Package Overview
 
 This monorepo contains multiple packages for both Python and TypeScript:
 
@@ -371,49 +357,21 @@ main();
 
 ---
 
-## 🤝 Community & Support
+## Community & Support
 
-- **💬 Discord**: [Join our community](https://discord.gg/XkNkSkMz3V)
-- **🐛 GitHub Issues**: [Report bugs or request features](https://github.com/mcp-use/mcp-use/issues)
-- **📖 Documentation**: [mcp-use.com/docs](https://mcp-use.com/docs)
-- **🌐 Website**: [manufact.com](https://manufact.com)
-- **🐦 Twitter**: Follow [@pietrozullo](https://x.com/pietrozullo) and [@pederzh](https://x.com/pederzh)
-
----
-
-## 📜 License
-
-MIT © [MCP-Use Contributors](https://github.com/mcp-use/mcp-use/graphs/contributors)
+- **Discord**: [Join our community](https://discord.gg/XkNkSkMz3V)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/mcp-use/mcp-use/issues)
+- **Documentation**: [mcp-use.com/docs](https://mcp-use.com/docs)
+- **Website**: [manufact.com](https://manufact.com)
+- **Twitter**: Follow [@pietrozullo](https://x.com/pietrozullo) and [@pederzh](https://x.com/pederzh)
+- **Contributing**: See [CONTRIBUTING.md](https://github.com/mcp-use/mcp-use/blob/main/CONTRIBUTING.md)
+- **License**: MIT © [MCP-Use Contributors](https://github.com/mcp-use/mcp-use/graphs/contributors)
 
 ---
 
-## 🙏 Contributing
-
-We love contributions! Check out our contributing guidelines:
-
-[CONTRIBUTING.md](https://github.com/mcp-use/mcp-use/blob/main/CONTRIBUTING.md)
-
----
-
-## ⭐ Star History
+## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=mcp-use/mcp-use&type=Date)](https://www.star-history.com/#mcp-use/mcp-use&Date)
-
----
-
-## 📝 Citation
-
-If you use MCP-Use in your research or project, please cite:
-
-```bibtex
-@software{mcp_use2025,
-  author = {Zullo, Pietro and Contributors},
-  title = {MCP-Use: Complete MCP Ecosystem for Python and TypeScript},
-  year = {2025},
-  publisher = {GitHub},
-  url = {https://github.com/mcp-use/mcp-use}
-}
-```
 
 ---
 
