@@ -39,19 +39,12 @@
         <img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/tonxxd/6edf670f0446dc9f7a1f32d6bfda2b70/raw/typescript-conformance.json" /></a>
     <br/>
 </p>
-
----
-
-<p align="center" style="max-width:600px; margin-bottom:40px">
-  <b>mcp-use</b> is the fullstack MCP framework
-  <br>
-  to build MCP Apps for ChatGPT & Claude
-  <br>
-  and MCP Servers for AI Agents.
-  </p>
 </div>
 
+##  About
 
+  <b>mcp-use</b> is the fullstack MCP framework
+  to build MCP Apps for ChatGPT & Claude and MCP Servers for AI Agents.
 
 ## What you can do
 
@@ -61,15 +54,13 @@
 
 ## Documentation
 
-Visit our [docs](https://mcp-use.com/docs) or jump to a quickstart:
-- [TypeScript Quickstart](https://mcp-use.com/docs/typescript/getting-started/quickstart) | [Python Quickstart](https://mcp-use.com/docs/python/getting-started/quickstart)
+Visit our [docs](https://mcp-use.com/docs) or jump to a quickstart ([TypeScript](https://mcp-use.com/docs/typescript/getting-started/quickstart) | [Python](https://mcp-use.com/docs/python/getting-started/quickstart))
 
 ### Skills for Coding Agents
 
-> **Using Cursor, Windsurf, Claude Code, or other AI coding agents?**
-> Install mcp-use skills so your agent knows how to use the framework:
+> **Using Claude Code, Codex, Cursor or other AI coding agents?**
 >
-> **[Browse mcp-use skills on skills.sh](https://skills.sh/?q=mcp-use)**
+> **[Install mcp-use skill](https://skills.sh/mcp-use/skills/chatgpt-app-builder)**
 
 ## Quickstart: MCP Servers and MCP Apps
 
