@@ -10,13 +10,6 @@
 </div>
 &nbsp;
 
-<p align="center" style="max-width:600px; margin-bottom:40px">
-  <b>mcp-use</b> is the fullstack MCP framework
-  <br>
-  to build MCP Apps for ChatGPT & Claude
-  <br>
-  and MCP Servers for AI Agents.
-  </p>
 <p align="center">
     <a href="https://mcp-use.com/docs" alt="Documentation">
         <img src="https://img.shields.io/badge/mcp--use-docs-blue?labelColor=white" /></a>
@@ -46,9 +39,19 @@
         <img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/tonxxd/6edf670f0446dc9f7a1f32d6bfda2b70/raw/typescript-conformance.json" /></a>
     <br/>
 </p>
-</div>
 
 ---
+
+<p align="center" style="max-width:600px; margin-bottom:40px">
+  <b>mcp-use</b> is the fullstack MCP framework
+  <br>
+  to build MCP Apps for ChatGPT & Claude
+  <br>
+  and MCP Servers for AI Agents.
+  </p>
+</div>
+
+
 
 ## What you can do
 
@@ -56,11 +59,17 @@
 - **Preview** on mcp-use MCP Inspector ([online](https://inspector.mcp-use.com/inspector) | [oss](https://github.com/mcp-use/mcp-use/tree/main/libraries/typescript/packages/inspector)): Test and debug your MCP Servers and Apps
 - **Deploy** on [Manufact MCP Cloud](https://manufact.com): Connect your GitHub repo and have your MCP Server and App up and running in production with observability, metrics, logs, branch-deployments, and more
 
-## Documentation and skill
+## Documentation
 
-Visit our [docs](https://mcp-use.com/docs), manually quickstart
-- Quickstarts: [TypeScript](https://mcp-use.com/docs/typescript/getting-started/quickstart) | [Python](https://mcp-use.com/docs/python/getting-started/quickstart)
-- [Skills (for coding agents)](https://skills.sh/?q=mcp-use)
+Visit our [docs](https://mcp-use.com/docs) or jump to a quickstart:
+- [TypeScript Quickstart](https://mcp-use.com/docs/typescript/getting-started/quickstart) | [Python Quickstart](https://mcp-use.com/docs/python/getting-started/quickstart)
+
+### Skills for Coding Agents
+
+> **Using Cursor, Windsurf, Claude Code, or other AI coding agents?**
+> Install mcp-use skills so your agent knows how to use the framework:
+>
+> **[Browse mcp-use skills on skills.sh](https://skills.sh/?q=mcp-use)**
 
 ## Quickstart: MCP Servers and MCP Apps
 
@@ -101,27 +110,70 @@ await server.listen(3000);
 
 MCP Apps let you build interactive widgets that work across Claude, ChatGPT, and other MCP clients — write once, run everywhere.
 
+**Server** — define a tool and point it to a widget:
+
 ```typescript
-import { MCPServer, text } from "mcp-use/server";
+import { MCPServer, widget } from "mcp-use/server";
 import { z } from "zod";
 
 const server = new MCPServer({
   name: "weather-app",
   version: "1.0.0",
-  mcpApps: true,
 });
 
 server.tool({
-  name: "get_weather",
+  name: "get-weather",
   description: "Get weather for a city",
   schema: z.object({ city: z.string() }),
-  widget: "weather-widget", // Reference your UI widget
+  widget: "weather-display", // references resources/weather-display/widget.tsx
 }, async ({ city }) => {
-  return text(`Temperature: 72°F, Condition: sunny, City: ${city}`);
+  return widget({
+    props: { city, temperature: 22, conditions: "Sunny" },
+    message: `Weather in ${city}: Sunny, 22°C`,
+  });
 });
 
 await server.listen(3000);
 ```
+
+**Widget** — create a React component in `resources/weather-display/widget.tsx`:
+
+```tsx
+import { useWidget, type WidgetMetadata } from "mcp-use/react";
+import { z } from "zod";
+
+const propSchema = z.object({
+  city: z.string(),
+  temperature: z.number(),
+  conditions: z.string(),
+});
+
+export const widgetMetadata: WidgetMetadata = {
+  description: "Display weather information",
+  props: propSchema,
+};
+
+const WeatherDisplay: React.FC = () => {
+  const { props, isPending, theme } = useWidget<z.infer<typeof propSchema>>();
+  const isDark = theme === "dark";
+
+  if (isPending) return <div>Loading...</div>;
+
+  return (
+    <div style={{
+      background: isDark ? "#1a1a2e" : "#f0f4ff",
+      borderRadius: 16, padding: 24,
+    }}>
+      <h2>{props.city}</h2>
+      <p>{props.temperature}° — {props.conditions}</p>
+    </div>
+  );
+};
+
+export default WeatherDisplay;
+```
+
+Widgets in `resources/` are **auto-discovered** — no manual registration needed.
 
 Visit [**MCP Apps Documentation**](https://mcp-use.com/docs/typescript/server/ui-widgets)
 
